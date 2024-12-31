@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="lambda_exercises.simple.exercise3.LambdaExercise3Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-12-31T21:43:18" hostname="CHASE-PC-11" time="0.012">
+  <properties/>
+  <testcase name="testAllEven()" classname="lambda_exercises.simple.exercise3.LambdaExercise3Test" time="0.012"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
