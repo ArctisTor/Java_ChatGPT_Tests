@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="lambda_exercises.simple.personExercise.PersonExerciseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-01-02T22:09:18" hostname="CHASE-PC-11" time="0.012">
+  <properties/>
+  <testcase name="testCountByAge()" classname="lambda_exercises.simple.personExercise.PersonExerciseTest" time="0.012"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

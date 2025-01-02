@@ -1,5 +1,6 @@
 package lambda_exercises.simple.exercise1;
 
+import org.example.exercises.LambdaExercises;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;

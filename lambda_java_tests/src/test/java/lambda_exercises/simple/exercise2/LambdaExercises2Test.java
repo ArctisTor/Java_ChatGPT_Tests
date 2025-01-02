@@ -1,5 +1,6 @@
 package lambda_exercises.simple.exercise2;
 
+import org.example.exercises.LambdaExercises2;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

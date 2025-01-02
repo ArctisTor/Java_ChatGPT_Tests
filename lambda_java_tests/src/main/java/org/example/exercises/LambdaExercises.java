@@ -1,4 +1,4 @@
-package lambda_exercises.simple.exercise1;
+package org.example.exercises;
 
 import java.util.Comparator;
 import java.util.function.Predicate;

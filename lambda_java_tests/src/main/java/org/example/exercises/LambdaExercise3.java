@@ -1,4 +1,4 @@
-package lambda_exercises.simple.exercise3;
+package org.example.exercises;
 
 
 import java.util.List;
@@ -15,15 +15,20 @@ public class LambdaExercise3 {
 
 
     public static List<String> removeDuplicates(List<String> strings) {
-        return null;
+        return strings.stream().distinct().toList();
     }
 
     public static Optional<Object> findFirstVowel(List<String> noVowelStrings) {
-        return null;
+        List<Character> vowels = List.of('a', 'e', 'i', 'o', 'u', 'y');
+        Predicate<String> charZero = s -> !s.isEmpty() && vowels.contains(s.charAt(0));
+        return noVowelStrings.stream().filter(charZero).findFirst().map(Object.class::cast);
     }
 
     public static List<String> filterLongStrings(List<String> strings) {
-        return null;
+        int maxLength = strings.stream().mapToInt(String::length).max().orElse(0);
+        return strings.stream()
+                .filter(s -> s.length() == maxLength)
+                .collect(Collectors.toList());
     }
 
     public static int sumEvenNumbers(List<Integer> numbers) {
