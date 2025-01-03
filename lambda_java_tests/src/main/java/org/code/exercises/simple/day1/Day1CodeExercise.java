@@ -1,5 +1,6 @@
 package org.code.exercises.simple.day1;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,5 +39,54 @@ public class Day1CodeExercise {
 
         return List.of();
     }
+
+    /**
+     * Finds the common elements between two lists of integers.
+     *
+     * @param list1 the first list of integers
+     * @param list2 the second list of integers
+     * @return a list of integers that are common to both lists, in sorted order
+     */
+    public static List<Integer> findCommonElements(List<Integer> list1, List<Integer> list2) {
+        if (list1.isEmpty() || list2.isEmpty()) {
+            return List.of();
+        }
+
+//        Set<Integer> unionSet = new HashSet<>();
+//        for (Integer numList1: list1) {
+//            if (list2.contains(numList1)) {
+//                unionSet.add(numList1);
+//            }
+//        }
+//
+//        return unionSet.stream().sorted(Comparator.naturalOrder()).toList();
+
+        Set<Integer> setList2 = new HashSet<>(list2);
+        return list1.stream()
+                .filter(setList2::contains)
+                .sorted()
+                .toList();
+    }
+
+    /**
+     * Filters a list of strings to include only names that start with a given letter,
+     * and transforms them into uppercase.
+     *
+     * @param names the list of names
+     * @param letter the starting letter to filter names
+     * @return a list of names that start with the given letter, converted to uppercase, sorted alphabetically
+     */
+    public static List<String> filterAndTransformNames(List<String> names, char letter) {
+        if (names.isEmpty()) {
+            return List.of();
+        }
+        return names.stream()
+                .filter(name -> !name.isEmpty() && Character.toUpperCase(name.charAt(0)) == Character.toUpperCase(letter))
+                .map(String::toUpperCase)
+                .sorted(Comparator.naturalOrder())
+                .toList();
+    }
+
+
 
 }
