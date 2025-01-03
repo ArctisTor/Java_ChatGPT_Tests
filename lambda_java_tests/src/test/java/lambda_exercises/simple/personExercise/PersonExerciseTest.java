@@ -129,4 +129,95 @@ public class PersonExerciseTest {
 
         assertEquals(2, count);
     }
+
+    @Test
+    public void testFindOldestPerson() {
+        List<Person> people = Arrays.asList(
+                new Person("John", "Doe", 25),
+                new Person("Jane", "Smith", 45),
+                new Person("Alice", "Johnson", 30)
+        );
+
+        Person result = PersonExercise.findOldestPerson(people);
+
+        assertEquals(new Person("Jane", "Smith", 45), result);
+    }
+
+    @Test
+    public void testCountLastNamesStartingWith() {
+        List<Person> people = Arrays.asList(
+                new Person("John", "Doe", 25),
+                new Person("Jane", "Smith", 30),
+                new Person("Alice", "Johnson", 35),
+                new Person("Bob", "Brown", 40)
+        );
+
+        long result = PersonExercise.countLastNamesStartingWith(people, 'S');
+
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testGroupByFirstNameLength() {
+        List<Person> people = Arrays.asList(
+                new Person("John", "Doe", 25),
+                new Person("Jane", "Smith", 30),
+                new Person("Alice", "Johnson", 35),
+                new Person("Bob", "Brown", 40)
+        );
+
+        Map<Integer, List<Person>> result = PersonExercise.groupByFirstNameLength(people);
+
+        assertTrue(result.containsKey(4)); // John and Jane
+        assertTrue(result.containsKey(3)); // Bob
+        assertTrue(result.containsKey(5)); // Alice
+
+        assertEquals(2, result.get(4).size()); // John and Jane
+        assertEquals(1, result.get(3).size()); // Bob
+        assertEquals(1, result.get(5).size()); // Alice
+    }
+
+    @Test
+    public void testGetDistinctAges() {
+        List<Person> people = Arrays.asList(
+                new Person("John", "Doe", 25),
+                new Person("Jane", "Smith", 30),
+                new Person("Alice", "Johnson", 25),
+                new Person("Bob", "Brown", 40)
+        );
+
+        List<Integer> result = PersonExercise.getDistinctAges(people);
+
+        assertEquals(Arrays.asList(25, 30, 40), result);
+    }
+
+
+    @Test
+    public void testAreAllOlderThan() {
+        List<Person> people = Arrays.asList(
+                new Person("John", "Doe", 25),
+                new Person("Jane", "Smith", 30),
+                new Person("Alice", "Johnson", 35)
+        );
+
+        boolean result = PersonExercise.areAllOlderThan(people, 20);
+        assertTrue(result);
+
+        boolean resultFalse = PersonExercise.areAllOlderThan(people, 30);
+        assertFalse(resultFalse);
+    }
+
+
+    @Test
+    public void testGetAverageAge() {
+        List<Person> people = Arrays.asList(
+                new Person("John", "Doe", 25),
+                new Person("Jane", "Smith", 30),
+                new Person("Alice", "Johnson", 35)
+        );
+
+        double result = PersonExercise.getAverageAge(people);
+
+        assertEquals(30.0, result, 0.01);
+    }
 }

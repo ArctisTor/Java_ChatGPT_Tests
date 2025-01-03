@@ -5,7 +5,6 @@ import org.example.objects.Person;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -42,4 +41,41 @@ public class PersonExercise {
                 .filter(age -> age == i)
                 .count();
     }
+
+    public static Person findOldestPerson(List<Person> people) {
+        int oldestPersonAge = people.stream().mapToInt(Person::getAge).max().orElse(0);
+        return people.stream().filter(p -> p.getAge() == oldestPersonAge).findFirst().orElse(null);
+    }
+
+    public static long countLastNamesStartingWith(List<Person> people, char letter) {
+        return people.stream()
+                .filter(person -> person.getLastName().startsWith(String.valueOf(letter)))
+                .count();
+    }
+
+    public static Map<Integer, List<Person>> groupByFirstNameLength(List<Person> people) {
+        return people.stream().collect(Collectors.groupingBy(person -> person.getFirstName().length()));
+    }
+
+    public static List<Integer> getDistinctAges(List<Person> people) {
+        return people.stream()
+                .mapToInt(Person::getAge)
+                .distinct()
+                .boxed()
+                .collect(Collectors.toList());
+    }
+
+    public static boolean areAllOlderThan(List<Person> people, int age) {
+        return people.stream().allMatch(p -> p.getAge() > age);
+    }
+
+    public static double getAverageAge(List<Person> people) {
+        return people.stream()
+                .mapToInt(Person::getAge)
+                .average()
+                .orElse(0.0);
+    }
+
+
+
 }
