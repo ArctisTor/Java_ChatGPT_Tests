@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Day1CodeExerices {
+public class Day1CodeExercise {
 
     /*
     Problem Statement: Write a method that takes a list of integers and returns the two numbers from the list that sum up to a target value.
