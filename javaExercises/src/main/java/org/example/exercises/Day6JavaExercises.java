@@ -72,6 +72,34 @@ public class Day6JavaExercises {
         return sortedInts[k-1];
     }
 
+    /*
+    count the number of times a char appears in a string
+     */
+    public static int occurrenceOfCharStringer(String input, char x) {
+        if (input == null) {
+            throw new NullPointerException("String is null");
+        }
+        return (int) input.chars()
+                .filter((c) -> c == x)
+                .count();
+    }
+
+    public static int mostCommonOccurrenceOfCharXinString(String input) {
+        if (input == null) {
+            throw new NullPointerException("String is null");
+        }
+
+        // Count occurrences of each character
+        Map<Character, Long> occurrenceMap = input.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+        return occurrenceMap.values()
+                .stream()
+                .mapToInt(Long::intValue)
+                .max()
+                .orElse(0);
+    }
+
 
 
 }

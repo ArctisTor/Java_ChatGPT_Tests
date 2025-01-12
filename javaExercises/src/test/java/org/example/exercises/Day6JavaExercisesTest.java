@@ -3,6 +3,7 @@ package org.example.exercises;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class Day6JavaExercisesTest {
 
@@ -45,7 +46,7 @@ public class Day6JavaExercisesTest {
 
     @Test
     public void testFindKthLargest2() {
-        int[] nums = {3, 2, 3, 1, 2, 4, 5, 5, 6};
+        int[] nums = {3, 2, 3, 1, 2, 4, 5, 5, 6}; //[6,5,5,4,3,3,2,2,1]
         int k = 4;
         assertEquals(4, Day6JavaExercises.findKthLargest(nums, k));
     }
@@ -73,4 +74,57 @@ public class Day6JavaExercisesTest {
         int k = 500000;
         assertEquals(500001, Day6JavaExercises.findKthLargest(nums, k));
     }
+
+
+    @Test
+    void testSingleOccurrence() {
+        String input = "hello";
+        char x = 'h';
+        assertEquals(1, Day6JavaExercises.occurrenceOfCharStringer(input, x));
+    }
+
+    @Test
+    void testMultipleOccurrences() {
+        String input = "banana";
+        char x = 'a';
+        assertEquals(3, Day6JavaExercises.occurrenceOfCharStringer(input, x));
+    }
+
+    @Test
+    void testNoOccurrences() {
+        String input = "apple";
+        char x = 'z';
+        assertEquals(0, Day6JavaExercises.occurrenceOfCharStringer(input, x));
+    }
+
+    @Test
+    void testEmptyString() {
+        String input = "";
+        char x = 'a';
+        assertEquals(0, Day6JavaExercises.occurrenceOfCharStringer(input, x));
+    }
+
+    @Test
+    void testNullString() {
+        String input = null;
+        char x = 'a';
+        assertThrows(NullPointerException.class, () -> {
+            Day6JavaExercises.occurrenceOfCharStringer(input, x);
+        });
+    }
+
+    @Test
+    void testCaseSensitivity() {
+        String input = "Hello";
+        char x = 'h';
+        assertEquals(0, Day6JavaExercises.occurrenceOfCharStringer(input, x));
+    }
+
+    @Test
+    void testSpecialCharacters() {
+        String input = "a!@#a$a%";
+        char x = 'a';
+        assertEquals(3, Day6JavaExercises.occurrenceOfCharStringer(input, x));
+    }
+
 }
