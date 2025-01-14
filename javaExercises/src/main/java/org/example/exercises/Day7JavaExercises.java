@@ -42,31 +42,48 @@ public class Day7JavaExercises {
             return 0;
         }
 
-        // Track substrings and their lengths
         Map<String, Integer> subStringMap = new LinkedHashMap<>();
+        String longestUniqueSubstring = "";
         int left = 0;
         int right = 0;
-
-        // Sliding window: Iterate with right pointer expanding the window
+        String subString = "";
         while (right < input.length()) {
-            String subString = input.substring(left, right + 1);  // Substring from left to right (inclusive)
-            int distinctLength = (int) subString.chars().distinct().count(); // Count distinct chars
-
-            if (distinctLength != subString.length()) { // Found a duplicate
-                String validSubstring = input.substring(left, right); // Valid substring without duplicate
-                subStringMap.put(validSubstring, validSubstring.length());
+            right++;
+            subString = input.substring(left, right);  // Substring from left to right (inclusive)
+            boolean notAdded = false;
+            while (!hasOnlyDistinctCharacters(subString)) {
+                if (!notAdded) {
+                    String tempString = input.substring(left, (right-1));
+                    subStringMap.put(tempString, tempString.length());
+                    notAdded = true;
+                }
                 left++;
-            } else {
-                right++;
+                subString = input.substring(left, right);
+            }
+
+            if (subString.length() > longestUniqueSubstring.length()) {
+                longestUniqueSubstring = subString;
             }
         }
 
-        if (left < input.length()) {
-            String finalSubstring = input.substring(left, right);
-            subStringMap.put(finalSubstring, finalSubstring.length());
+        if (!subString.isEmpty() &&
+                hasOnlyDistinctCharacters(subString) &&
+                !subStringMap.containsKey(subString)) {
+            subStringMap.put(subString, subString.length());
         }
 
-        return subStringMap.values().stream().max(Integer::compareTo).orElse(0);
+        int longestLength = subStringMap.values().stream()
+                .max(Integer::compareTo)
+                .stream()
+                .findFirst()
+                .orElse(0);
+
+
+        return longestUniqueSubstring.length();
+    }
+
+    private static boolean hasOnlyDistinctCharacters(String subString) {
+        return subString.chars().distinct().count() == subString.length();
     }
 
 
