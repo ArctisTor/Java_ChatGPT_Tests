@@ -208,16 +208,21 @@ public class PersonExerciseTest {
     }
 
 
+//    @Test
+//    public void testGetAverageAge() {
+//        List<Person> people = Arrays.asList(
+//                new Person("John", "Doe", 25),
+//                new Person("Jane", "Smith", 30),
+//                new Person("Alice", "Johnson", 35)
+//        );
+//
+//        double result = PersonExercise.getAverageAge(people);
+//
+//        assertEquals(30.0, result, 0.01);
+//    }
+
     @Test
-    public void testGetAverageAge() {
-        List<Person> people = Arrays.asList(
-                new Person("John", "Doe", 25),
-                new Person("Jane", "Smith", 30),
-                new Person("Alice", "Johnson", 35)
-        );
-
-        double result = PersonExercise.getAverageAge(people);
-
-        assertEquals(30.0, result, 0.01);
+    public void test() {
+        PersonExercise.sequenceOfNumbers("40 40 40 40 29 29 29 29 29 29 29 29 57 57 92 92 92 92 92 86 86 86 86 86 86 86 86 86 86");
     }
 }

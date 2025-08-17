@@ -2,6 +2,8 @@ package org.example.exercises;
 
 import org.example.objects.Person;
 
+import java.io.BufferedReader;
+import java.io.StringReader;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -69,11 +71,39 @@ public class PersonExercise {
         return people.stream().allMatch(p -> p.getAge() > age);
     }
 
-    public static double getAverageAge(List<Person> people) {
-        return people.stream()
-                .mapToInt(Person::getAge)
-                .average()
-                .orElse(0.0);
+    public static String sequenceOfNumbers(String sequence) {
+        StringBuilder sequenceString = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(new StringReader(sequence))) {
+            String line = reader.readLine(); // Read the entire sequence (only one line)
+            if (line != null) {
+                String[] numbers = line.split("\\s+");  // Split the input by whitespace
+
+                int occurance = 1; // Start with 1 occurrence for the first number
+                int targetNumber = Integer.parseInt(numbers[0]); // The first number in the sequence
+
+                // Loop through the numbers starting from the second element
+                for (int i = 1; i < numbers.length; i++) {
+                    int num = Integer.parseInt(numbers[i]);
+
+                    if (num == targetNumber) {
+                        occurance++;  // Increment the occurrence if it's the same number
+                    } else {
+                        // Append the current count and number to the result
+                        sequenceString.append(occurance).append(" ").append(targetNumber).append(" ");
+
+                        // Update target number and reset occurrence
+                        targetNumber = num;
+                        occurance = 1;
+                    }
+                }
+
+                // Append the final sequence (for the last group of numbers)
+                sequenceString.append(occurance).append(" ").append(targetNumber);
+            }
+        }  catch (Exception e) {
+
+        }
+        return sequenceString.toString();
     }
 
 
