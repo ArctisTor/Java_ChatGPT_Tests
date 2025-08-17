@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.exercises.Day7JavaExercisesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-01-14T15:11:34" hostname="CHASE-PC-11" time="13.95">
+  <properties/>
+  <testcase name="testLengthOfLongestSubstring()" classname="org.example.exercises.Day7JavaExercisesTest" time="13.95"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
